@@ -1,26 +1,153 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-paper: #F4F1EA;
+  --bg-surface: #FFFFFF;
+  --bg-stone: #E8E3D8;
+  --text-ink: #0E0E0E;
+  --text-muted: #59554F;
+  --border-rule: #0E0E0E;
+  --border-subtle: #D6D0C4;
+  --accent: #8C6A2F;
+  --accent-hover: #735523;
+  --radius: 0px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-paper: var(--bg-paper);
+  --color-surface: var(--bg-surface);
+  --color-stone: var(--bg-stone);
+  --color-ink: var(--text-ink);
+  --color-muted: var(--text-muted);
+  --color-rule: var(--border-rule);
+  --color-subtle: var(--border-subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-serif: var(--font-serif), Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base resets & brutalist standards */
+* {
+  border-radius: 0px !important;
+}
+
+html {
+  background-color: var(--bg-paper);
+  color: var(--text-ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-paper);
+  color: var(--text-ink);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Strict selection color */
+::selection {
+  background-color: var(--text-ink);
+  color: var(--bg-paper);
+}
+
+/* Focus ring accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Hard hairlines */
+.rule-b {
+  border-bottom: 1px solid var(--border-rule);
+}
+.rule-t {
+  border-top: 1px solid var(--border-rule);
+}
+.rule-l {
+  border-left: 1px solid var(--border-rule);
+}
+.rule-r {
+  border-right: 1px solid var(--border-rule);
+}
+.rule-all {
+  border: 1px solid var(--border-rule);
+}
+.rule-2 {
+  border-width: 2px;
+}
+
+/* Monospace ticker marquee animation */
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: ticker 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Lenis smooth scrolling rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* High contrast custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-rule);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

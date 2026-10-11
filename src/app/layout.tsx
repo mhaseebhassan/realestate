@@ -69,10 +69,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/hero/dubai-hero.webp",
-        width: 1600,
-        height: 1067,
-        alt: `${brandConfig.broker.fullName} Dubai Prime Real Estate`,
+        url: "/images/og-share.webp",
+        width: 1200,
+        height: 630,
+        alt: `${brandConfig.broker.fullName} Dubai Prime Real Estate Advisory`,
       },
     ],
   },
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${brandConfig.broker.fullName} | Dubai Luxury Real Estate`,
     description: brandConfig.broker.bioShort,
-    images: ["/images/hero/dubai-hero.webp"],
+    images: ["/images/og-share.webp"],
   },
   robots: {
     index: true,

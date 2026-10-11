@@ -161,13 +161,13 @@ export default function Footer() {
           © {currentYear} {brandConfig.broker.fullName}. All rights reserved.
         </div>
         <div className="flex items-center gap-6">
-          <Link href="/legal" className="hover:text-[#0E0E0E] transition-colors">
+          <Link href="/legal#privacy" className="hover:text-[#0E0E0E] transition-colors">
             Privacy Policy
           </Link>
-          <Link href="/legal" className="hover:text-[#0E0E0E] transition-colors">
+          <Link href="/legal#terms" className="hover:text-[#0E0E0E] transition-colors">
             Terms of Representation
           </Link>
-          <Link href="/legal" className="hover:text-[#0E0E0E] transition-colors">
+          <Link href="/legal#rera" className="hover:text-[#0E0E0E] transition-colors">
             RERA Verification
           </Link>
         </div>

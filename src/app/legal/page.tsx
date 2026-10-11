@@ -35,12 +35,12 @@ export default function LegalPage() {
         {/* Legal Text Sections */}
         <div className="max-w-4xl mx-auto px-4 md:px-8 py-16 space-y-12">
           {/* Section 1: RERA & DLD Regulatory Accreditations */}
-          <div className="p-8 bg-[#FFFFFF] border-2 border-[#0E0E0E]">
+          <div id="rera" className="p-8 bg-[#FFFFFF] border-2 border-[#0E0E0E] scroll-mt-24">
             <span className="font-mono text-xs uppercase tracking-widest text-[#8C6A2F] block mb-2">
               SECTION 01 · REGULATORY STANDING
             </span>
             <h2 className="font-sans font-black text-2xl text-[#0E0E0E] mb-4">
-              DUBAI REAL ESTATE REGULATORY AGENCY (RERA) DISCLOSURE
+              DUBAI REAL ESTATE REGULATORY AGENCY (RERA) DISCLOSURE & VERIFICATION
             </h2>
             <div className="space-y-3 font-sans text-sm text-[#0E0E0E] leading-relaxed">
               <p>
@@ -49,11 +49,14 @@ export default function LegalPage() {
               <p>
                 All conveyancing, title deed issuances, and official sales contracts are executed strictly in accordance with Dubai Law No. 7 of 2006 (Concerning Real Property Registration in the Emirate of Dubai) through authorized Dubai Land Department (DLD) Trustee Offices.
               </p>
+              <p className="font-mono text-xs text-[#59554F] pt-2 border-t border-[#0E0E0E]/20">
+                Official broker registration and license validity may be verified directly on the Dubai REST mobile application or via the Dubai Land Department official portal (dubailand.gov.ae).
+              </p>
             </div>
           </div>
 
           {/* Section 2: Escrow Accounts Law */}
-          <div className="p-8 bg-[#FFFFFF] border-2 border-[#0E0E0E]">
+          <div id="escrow" className="p-8 bg-[#FFFFFF] border-2 border-[#0E0E0E] scroll-mt-24">
             <span className="font-mono text-xs uppercase tracking-widest text-[#8C6A2F] block mb-2">
               SECTION 02 · OFF-PLAN DEPOSITS
             </span>
@@ -68,7 +71,7 @@ export default function LegalPage() {
           </div>
 
           {/* Section 3: Privacy & Data Protection */}
-          <div className="p-8 bg-[#FFFFFF] border-2 border-[#0E0E0E]">
+          <div id="privacy" className="p-8 bg-[#FFFFFF] border-2 border-[#0E0E0E] scroll-mt-24">
             <span className="font-mono text-xs uppercase tracking-widest text-[#8C6A2F] block mb-2">
               SECTION 03 · CONFIDENTIALITY
             </span>
@@ -86,7 +89,7 @@ export default function LegalPage() {
           </div>
 
           {/* Section 4: Cookie Policy */}
-          <div className="p-8 bg-[#FFFFFF] border-2 border-[#0E0E0E]">
+          <div id="cookies" className="p-8 bg-[#FFFFFF] border-2 border-[#0E0E0E] scroll-mt-24">
             <span className="font-mono text-xs uppercase tracking-widest text-[#8C6A2F] block mb-2">
               SECTION 04 · ANALYTICS
             </span>
@@ -96,6 +99,27 @@ export default function LegalPage() {
             <div className="space-y-3 font-sans text-sm text-[#0E0E0E] leading-relaxed">
               <p>
                 This website employs minimal performance and engagement cookies strictly to monitor portfolio visits and optimize conversion flows. Analytical scripts (Google Analytics GA4 and Meta Pixel) execute solely after user acceptance via our consent banner. Users may decline analytics without impacting website access or inquiry transmission.
+              </p>
+            </div>
+          </div>
+
+          {/* Section 5: Terms of Client Representation */}
+          <div id="terms" className="p-8 bg-[#FFFFFF] border-2 border-[#0E0E0E] scroll-mt-24">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#8C6A2F] block mb-2">
+              SECTION 05 · ADVISORY ENGAGEMENT
+            </span>
+            <h2 className="font-sans font-black text-2xl text-[#0E0E0E] mb-4">
+              TERMS OF CLIENT REPRESENTATION & CONVEYANCING MANDATE
+            </h2>
+            <div className="space-y-3 font-sans text-sm text-[#0E0E0E] leading-relaxed">
+              <p>
+                <strong>Bilateral Advisory Mandate:</strong> Private client representation by <strong>{broker.fullName}</strong> ({broker.brokerageName}) is conducted on an advisory basis until execution of official Form A (Seller Representation Agreement) or Form B (Buyer Mandate Agreement) as prescribed by the Dubai Land Department.
+              </p>
+              <p>
+                <strong>Zero Commission on Direct Developer Allocations:</strong> In accordance with standard UAE master developer agency contracts, acquisitions in certified off-plan projects and direct developer inventory carry <strong>0% buyer agency fees</strong>. Secondary ready property acquisitions observe statutory 2.0% brokerage commission (+ 5% UAE VAT) payable upon successful title deed registration at an authorized DLD Trustee Office.
+              </p>
+              <p>
+                <strong>Conveyancing & AML Compliance:</strong> All principals, beneficial owners, and purchasing entities must complete statutory Anti-Money Laundering (AML) verifications under UAE Federal Law No. 20 of 2018 prior to issuance of Unified Contract F (Sales Contract MOU).
               </p>
             </div>
           </div>

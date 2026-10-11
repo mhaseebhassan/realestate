@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { brandConfig, buildWhatsAppLink } from "@/config/brand";
+import { useCurrency } from "@/context/CurrencyContext";
 import { WhatsAppIcon, ArrowUpRightIcon, CheckIcon } from "./Icons";
 
 interface LeadFormProps {
@@ -19,6 +20,7 @@ export default function LeadForm({
   subheading = "Direct advisory handshake with Tariq Al-Mansoor. Zero brokerage solicitation.",
   buttonLabel = "DISPATCH VIA WHATSAPP"
 }: LeadFormProps) {
+  const { currency, formatPrice } = useCurrency();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [budget, setBudget] = useState("AED 25M - 50M");
@@ -162,10 +164,18 @@ Please confirm your availability for a private consultation.`;
                 onChange={(e) => setBudget(e.target.value)}
                 className="w-full p-3 border border-[#0E0E0E] bg-[#F4F1EA] font-mono text-sm text-[#0E0E0E] outline-none focus:border-[#8C6A2F]"
               >
-                <option value="AED 10M - 25M">AED 10M - 25M (Prime Luxury)</option>
-                <option value="AED 25M - 50M">AED 25M - 50M (Ultra Prime)</option>
-                <option value="AED 50M - 100M">AED 50M - 100M (Trophy Residences)</option>
-                <option value="AED 100M+">AED 100M+ (Mega Mansions & Islands)</option>
+                <option value="AED 10M - 25M">
+                  AED 10M - 25M {currency !== "AED" ? `(~${formatPrice(10000000)} - ${formatPrice(25000000)})` : "(Prime Luxury)"}
+                </option>
+                <option value="AED 25M - 50M">
+                  AED 25M - 50M {currency !== "AED" ? `(~${formatPrice(25000000)} - ${formatPrice(50000000)})` : "(Ultra Prime)"}
+                </option>
+                <option value="AED 50M - 100M">
+                  AED 50M - 100M {currency !== "AED" ? `(~${formatPrice(50000000)} - ${formatPrice(100000000)})` : "(Trophy Residences)"}
+                </option>
+                <option value="AED 100M+">
+                  AED 100M+ {currency !== "AED" ? `(~${formatPrice(100000000)}+)` : "(Mega Mansions & Islands)"}
+                </option>
               </select>
             </div>
 

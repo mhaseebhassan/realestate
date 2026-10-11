@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { offPlanProjects } from "@/data/offplan";
 import { brandConfig, buildWhatsAppLink } from "@/config/brand";
 import LeadForm from "@/components/LeadForm";
+import CurrencyPrice from "@/components/CurrencyPrice";
 import { WhatsAppIcon, ShieldVerifiedIcon, ArrowUpRightIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
@@ -141,9 +142,9 @@ export default function OffPlanPage() {
                         <span className="text-[10px] uppercase text-[#59554F] block">
                           STARTING ACQUISITION
                         </span>
-                        <span className="font-black text-2xl text-[#0E0E0E]">
-                          AED {new Intl.NumberFormat('en-AE').format(project.startingPriceAed)}
-                        </span>
+                        <div className="font-black text-2xl text-[#0E0E0E]">
+                          <CurrencyPrice aedAmount={project.startingPriceAed} showOriginalAed />
+                        </div>
                       </div>
 
                       <a

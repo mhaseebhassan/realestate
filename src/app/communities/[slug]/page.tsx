@@ -9,6 +9,7 @@ import { communities, getCommunityBySlug } from "@/data/communities";
 import { properties } from "@/data/properties";
 import { brandConfig } from "@/config/brand";
 import LeadForm from "@/components/LeadForm";
+import CurrencyPrice from "@/components/CurrencyPrice";
 import { ArrowUpRightIcon, MapPinIcon } from "@/components/Icons";
 
 interface Props {
@@ -93,9 +94,11 @@ export default async function CommunityDetailPage({ params }: Props) {
 
             {/* Quick Metrics Badge */}
             <div className="p-6 bg-[#FFFFFF] border-2 border-[#0E0E0E] shrink-0 font-mono text-xs space-y-3">
-              <div className="flex justify-between gap-8 border-b border-[#0E0E0E]/20 pb-2">
+              <div className="flex justify-between gap-8 border-b border-[#0E0E0E]/20 pb-2 items-baseline">
                 <span className="text-[#59554F] uppercase">AVERAGE CAPITAL:</span>
-                <span className="font-bold text-[#0E0E0E]">AED {community.avgPricePerSqftAed} / SQFT</span>
+                <span className="font-bold text-[#0E0E0E]">
+                  <CurrencyPrice aedAmount={community.avgPricePerSqftAed} isSqft />
+                </span>
               </div>
               <div className="flex justify-between gap-8 border-b border-[#0E0E0E]/20 pb-2">
                 <span className="text-[#59554F] uppercase">GROSS RENTAL YIELD:</span>

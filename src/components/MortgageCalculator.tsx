@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { brandConfig, buildWhatsAppLink, formatCurrency } from "@/config/brand";
+import { brandConfig, buildWhatsAppLink } from "@/config/brand";
 import { useCurrency } from "@/context/CurrencyContext";
 import { WhatsAppIcon, ArrowUpRightIcon } from "./Icons";
 
 export default function MortgageCalculator() {
-  const { formatPrice } = useCurrency();
+  const { formatPrice, currency } = useCurrency();
 
   // State defaults
   const [propertyPriceAed, setPropertyPriceAed] = useState<number>(35000000);
@@ -60,12 +60,12 @@ export default function MortgageCalculator() {
   }, [propertyPriceAed, downPaymentPercent, loanTermYears, interestRate]);
 
   // Construct WhatsApp payload
-  const whatsappMessage = `Hi ${brandConfig.broker.firstName}, I ran your Dubai Mortgage & DLD Acquisition Calculator for a property priced at ${formatCurrency(calculations.price)}:
-- Down Payment (${downPaymentPercent}%): ${formatCurrency(calculations.downPayment)}
-- Loan Amount: ${formatCurrency(calculations.loanAmount)} (${loanTermYears} years @ ${interestRate}%)
-- Estimated Monthly Installment: ${formatCurrency(calculations.monthlyPayment)} / month
-- Total Acquisition Fees (DLD, Agency, Trustee): ${formatCurrency(calculations.totalUpfrontFees)}
-- Total Initial Cash Required: ${formatCurrency(calculations.totalCashRequired)}
+  const whatsappMessage = `Hi ${brandConfig.broker.firstName}, I ran your Dubai Mortgage & DLD Acquisition Calculator for a property priced at ${formatPrice(calculations.price)}${currency !== 'AED' ? ` (AED ${new Intl.NumberFormat('en-AE').format(calculations.price)})` : ''}:
+- Down Payment (${downPaymentPercent}%): ${formatPrice(calculations.downPayment)}
+- Loan Amount: ${formatPrice(calculations.loanAmount)} (${loanTermYears} years @ ${interestRate}%)
+- Estimated Monthly Installment: ${formatPrice(calculations.monthlyPayment)} / month
+- Total Acquisition Fees (DLD, Agency, Trustee): ${formatPrice(calculations.totalUpfrontFees)}
+- Total Initial Cash Required: ${formatPrice(calculations.totalCashRequired)}
 
 Please send me your private banking mortgage advisory note and pre-approval roadmap.`;
 
@@ -146,10 +146,10 @@ Please send me your private banking mortgage advisory note and pre-approval road
             <div className="mb-8">
               <div className="flex justify-between items-baseline mb-2">
                 <label className="font-mono text-xs uppercase text-[#59554F]">
-                  PROPERTY VALUATION (AED)
+                  PROPERTY VALUATION {currency !== "AED" ? `(${currency})` : "(AED)"}
                 </label>
                 <span className="font-mono font-bold text-lg md:text-xl text-[#0E0E0E]">
-                  {formatCurrency(propertyPriceAed)}
+                  {formatPrice(propertyPriceAed)}
                 </span>
               </div>
               <input
@@ -162,9 +162,9 @@ Please send me your private banking mortgage advisory note and pre-approval road
                 className="w-full h-2 bg-[#E8E3D8] accent-[#8C6A2F] cursor-pointer"
               />
               <div className="flex justify-between font-mono text-[10px] text-[#59554F] mt-1">
-                <span>AED 5M</span>
-                <span>AED 50M</span>
-                <span>AED 120M</span>
+                <span>{formatPrice(5000000)}</span>
+                <span>{formatPrice(50000000)}</span>
+                <span>{formatPrice(120000000)}</span>
               </div>
             </div>
 
@@ -175,7 +175,7 @@ Please send me your private banking mortgage advisory note and pre-approval road
                   EQUITY DOWN PAYMENT ({downPaymentPercent}%)
                 </label>
                 <span className="font-mono font-bold text-base md:text-lg text-[#0E0E0E]">
-                  {formatCurrency(calculations.downPayment)}
+                  {formatPrice(calculations.downPayment)}
                 </span>
               </div>
               <input
@@ -248,11 +248,11 @@ Please send me your private banking mortgage advisory note and pre-approval road
                   ESTIMATED MONTHLY INSTALLMENT
                 </span>
                 <div className="font-mono font-black text-3xl md:text-4xl text-[#0E0E0E] mt-2 mb-1">
-                  {formatCurrency(calculations.monthlyPayment)}
+                  {formatPrice(calculations.monthlyPayment)}
                   <span className="text-sm font-normal text-[#59554F]"> / mo</span>
                 </div>
                 <span className="font-mono text-[11px] text-[#8C6A2F]">
-                  Principal: {formatCurrency(calculations.loanAmount)} over {loanTermYears} years
+                  Principal: {formatPrice(calculations.loanAmount)} over {loanTermYears} years
                 </span>
               </div>
 
@@ -260,27 +260,27 @@ Please send me your private banking mortgage advisory note and pre-approval road
               <div className="space-y-2.5 font-mono text-xs mb-6">
                 <div className="flex justify-between py-1 border-b border-[#0E0E0E]/20">
                   <span className="text-[#59554F]">Down Payment ({downPaymentPercent}%):</span>
-                  <span className="font-bold">{formatCurrency(calculations.downPayment)}</span>
+                  <span className="font-bold">{formatPrice(calculations.downPayment)}</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-[#0E0E0E]/20">
                   <span className="text-[#59554F]">DLD Transfer Fee (4.0%):</span>
-                  <span className="font-bold">{formatCurrency(calculations.dldFee)}</span>
+                  <span className="font-bold">{formatPrice(calculations.dldFee)}</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-[#0E0E0E]/20">
                   <span className="text-[#59554F]">DLD Trustee Registration:</span>
-                  <span className="font-bold">{formatCurrency(calculations.dldAdminFee)}</span>
+                  <span className="font-bold">{formatPrice(calculations.dldAdminFee)}</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-[#0E0E0E]/20">
                   <span className="text-[#59554F]">Agency Brokerage Fee (2% + VAT):</span>
-                  <span className="font-bold">{formatCurrency(calculations.agencyFee)}</span>
+                  <span className="font-bold">{formatPrice(calculations.agencyFee)}</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-[#0E0E0E]/20">
                   <span className="text-[#59554F]">Mortgage Registration (0.25%):</span>
-                  <span className="font-bold">{formatCurrency(calculations.mortgageRegFee)}</span>
+                  <span className="font-bold">{formatPrice(calculations.mortgageRegFee)}</span>
                 </div>
                 <div className="flex justify-between py-2 border-b-2 border-[#0E0E0E] font-bold text-sm bg-[#E8E3D8] px-2">
                   <span>TOTAL UPFRONT CASH REQUIRED:</span>
-                  <span className="text-[#8C6A2F]">{formatCurrency(calculations.totalCashRequired)}</span>
+                  <span className="text-[#8C6A2F]">{formatPrice(calculations.totalCashRequired)}</span>
                 </div>
               </div>
             </div>

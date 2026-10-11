@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { communities } from "@/data/communities";
+import CurrencyPrice from "./CurrencyPrice";
 import { ArrowUpRightIcon } from "./Icons";
 
 export default function CommunitiesGrid() {
@@ -70,9 +71,11 @@ export default function CommunitiesGrid() {
 
                   {/* Single Data Line */}
                   <div className="pt-4 border-t border-[#0E0E0E]/20 font-mono text-[11px] uppercase space-y-1">
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-baseline">
                       <span className="text-[#59554F]">PRIME AVG:</span>
-                      <span className="font-bold text-[#0E0E0E]">AED {c.avgPricePerSqftAed} / SQFT</span>
+                      <span className="font-bold text-[#0E0E0E]">
+                        <CurrencyPrice aedAmount={c.avgPricePerSqftAed} isSqft />
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#59554F]">EST. YIELD:</span>

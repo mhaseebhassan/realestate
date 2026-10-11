@@ -12,7 +12,7 @@ export default function HeroSection() {
   );
 
   return (
-    <section className="relative w-full min-h-[90vh] md:min-h-[92vh] flex flex-col justify-between border-b-2 border-[#0E0E0E] bg-[#F4F1EA] overflow-hidden">
+    <section className="relative w-full min-h-[85vh] md:min-h-[88vh] lg:min-h-[calc(100vh-4rem)] flex flex-col justify-between border-b-2 border-[#0E0E0E] bg-[#F4F1EA] overflow-hidden">
       {/* Background Architectural Image with Crisp Daylight Filter */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -29,9 +29,9 @@ export default function HeroSection() {
       </div>
 
       {/* Top Meta Bar */}
-      <div className="relative z-10 w-full px-4 md:px-8 pt-6 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] uppercase tracking-wider text-[#0E0E0E]">
+      <div className="relative z-10 w-full px-4 md:px-8 pt-4 md:pt-5 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] uppercase tracking-wider text-[#0E0E0E]">
         <div className="flex items-center gap-3">
-          <span className="px-2.5 py-1 bg-[#FFFFFF] border border-[#0E0E0E] font-bold">
+          <span className="px-2.5 py-0.5 bg-[#FFFFFF] border border-[#0E0E0E] font-bold">
             {brandConfig.broker.license.orn} · {brandConfig.broker.license.brn}
           </span>
           <span className="hidden sm:inline text-[#59554F]">
@@ -49,30 +49,30 @@ export default function HeroSection() {
       </div>
 
       {/* Main Center Content */}
-      <div className="relative z-10 w-full px-4 md:px-8 py-12 md:py-16 max-w-6xl">
-        <div className="inline-block px-3 py-1 bg-[#0E0E0E] text-[#FFFFFF] font-mono text-[11px] uppercase font-bold tracking-widest mb-6">
+      <div className="relative z-10 w-full px-4 md:px-8 py-6 md:py-8 lg:py-8 max-w-6xl">
+        <div className="inline-block px-2.5 py-0.5 bg-[#0E0E0E] text-[#FFFFFF] font-mono text-[10px] sm:text-[11px] uppercase font-bold tracking-widest mb-3 md:mb-4">
           PRIVATE CLIENT REPRESENTATION · ULTRA PRIME ONLY
         </div>
 
         {/* 6 to 9 word giant headline with serif italic accent */}
-        <h1 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-8xl tracking-tight text-[#0E0E0E] leading-[0.98] mb-6">
+        <h1 className="font-sans font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-[#0E0E0E] leading-[1.0] mb-3 md:mb-4">
           DUBAI&apos;S BEST <br className="sm:hidden" />ADDRESSES. <br />
           NEGOTIATED <span className="font-serif italic font-normal text-[#8C6A2F]">PROPERLY.</span>
         </h1>
 
-        {/* One-sentence proof line */}
-        <p className="font-sans text-base sm:text-xl text-[#0E0E0E] max-w-2xl font-medium leading-relaxed mb-8">
+        {/* One-sentence proof line / tagline */}
+        <p className="font-sans text-sm sm:text-base md:text-lg text-[#0E0E0E] max-w-2xl font-medium leading-relaxed mb-5 md:mb-6">
           Over AED 3.8B in verified private transactions across Palm Jumeirah, Emirates Hills, and Jumeirah Bay. Direct representation without junior handoffs.
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
           {/* Primary: WhatsApp */}
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 bg-[#8C6A2F] text-[#FFFFFF] font-mono text-xs font-bold uppercase tracking-widest hover:bg-[#735523] transition-colors flex items-center justify-center gap-2.5 border border-[#8C6A2F]"
+            className="px-6 py-3 md:py-3.5 bg-[#8C6A2F] text-[#FFFFFF] font-mono text-xs font-bold uppercase tracking-widest hover:bg-[#735523] transition-colors flex items-center justify-center gap-2.5 border border-[#8C6A2F]"
           >
             <WhatsAppIcon className="w-4 h-4" />
             <span>WHATSAPP {brandConfig.broker.firstName.toUpperCase()}</span>
@@ -81,7 +81,7 @@ export default function HeroSection() {
           {/* Outlined: Request viewing */}
           <Link
             href="/#calculator"
-            className="px-8 py-4 bg-[#FFFFFF] text-[#0E0E0E] border-2 border-[#0E0E0E] font-mono text-xs font-bold uppercase tracking-widest hover:bg-[#0E0E0E] hover:text-[#FFFFFF] transition-colors flex items-center justify-center gap-2"
+            className="px-6 py-3 md:py-3.5 bg-[#FFFFFF] text-[#0E0E0E] border-2 border-[#0E0E0E] font-mono text-xs font-bold uppercase tracking-widest hover:bg-[#0E0E0E] hover:text-[#FFFFFF] transition-colors flex items-center justify-center gap-2"
           >
             <span>MORTGAGE & DLD CALCULATOR</span>
             <ArrowRightIcon className="w-4 h-4" />
@@ -91,21 +91,21 @@ export default function HeroSection() {
 
       {/* Bottom Ticker / Stat Pillars */}
       <div className="relative z-10 w-full border-t-2 border-[#0E0E0E] bg-[#FFFFFF]/90 grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-[#0E0E0E]">
-        <div className="p-4 md:p-6 font-mono">
+        <div className="p-3 md:py-3.5 md:px-6 font-mono">
           <span className="text-[10px] uppercase text-[#59554F] block">BROKER TENURE</span>
-          <span className="text-xl md:text-2xl font-black text-[#0E0E0E]">14 YEARS DUBAI PRIME</span>
+          <span className="text-lg md:text-xl font-black text-[#0E0E0E]">14 YEARS DUBAI PRIME</span>
         </div>
-        <div className="p-4 md:p-6 font-mono">
+        <div className="p-3 md:py-3.5 md:px-6 font-mono">
           <span className="text-[10px] uppercase text-[#59554F] block">CAPITAL DEPLOYED</span>
-          <span className="text-xl md:text-2xl font-black text-[#0E0E0E]">AED 3.8B+ TRANSACTED</span>
+          <span className="text-lg md:text-xl font-black text-[#0E0E0E]">AED 3.8B+ TRANSACTED</span>
         </div>
-        <div className="p-4 md:p-6 font-mono">
+        <div className="p-3 md:py-3.5 md:px-6 font-mono">
           <span className="text-[10px] uppercase text-[#59554F] block">ESCROW & TITLE</span>
-          <span className="text-xl md:text-2xl font-black text-[#0E0E0E]">DLD VERIFIED TRUSTEE</span>
+          <span className="text-lg md:text-xl font-black text-[#0E0E0E]">DLD VERIFIED TRUSTEE</span>
         </div>
-        <div className="p-4 md:p-6 font-mono">
+        <div className="p-3 md:py-3.5 md:px-6 font-mono">
           <span className="text-[10px] uppercase text-[#59554F] block">RESPONSE SLA</span>
-          <span className="text-xl md:text-2xl font-black text-[#8C6A2F]">WITHIN 15 MINUTES</span>
+          <span className="text-lg md:text-xl font-black text-[#8C6A2F]">WITHIN 15 MINUTES</span>
         </div>
       </div>
     </section>

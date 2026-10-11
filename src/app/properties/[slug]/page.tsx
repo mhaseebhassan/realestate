@@ -10,6 +10,7 @@ import { brandConfig, formatCurrency } from "@/config/brand";
 import PropertyGallery from "./PropertyGallery";
 import PropertyStickyBar from "./PropertyStickyBar";
 import LeadForm from "@/components/LeadForm";
+import CurrencyPrice from "@/components/CurrencyPrice";
 import { ArrowUpRightIcon, BedIcon, AreaIcon, ShieldVerifiedIcon, MapPinIcon } from "@/components/Icons";
 
 interface Props {
@@ -130,10 +131,10 @@ export default async function PropertyDetailPage({ params }: Props) {
                 OFFICIAL ASKING PRICE
               </span>
               <div className="font-black text-2xl md:text-4xl text-[#0E0E0E] my-1">
-                AED {new Intl.NumberFormat('en-AE').format(property.priceAed)}
+                <CurrencyPrice aedAmount={property.priceAed} showOriginalAed />
               </div>
-              <div className="flex justify-between items-center text-xs text-[#59554F] pt-2 border-t border-[#0E0E0E]/20">
-                <span>AED {new Intl.NumberFormat('en-AE').format(property.pricePerSqft)} / SQFT</span>
+              <div className="flex justify-between items-center text-xs text-[#59554F] pt-2 border-t border-[#0E0E0E]/20 gap-4">
+                <CurrencyPrice aedAmount={property.pricePerSqft} isSqft />
                 <span className="text-[#8C6A2F] font-bold">{property.status}</span>
               </div>
             </div>
@@ -213,7 +214,9 @@ export default async function PropertyDetailPage({ params }: Props) {
                   </div>
                   <div className="flex justify-between py-2 border-b border-[#0E0E0E]/20">
                     <span className="text-[#59554F]">ANNUAL SERVICE CHARGE:</span>
-                    <span className="font-bold">AED {property.serviceChargeAedPerSqft} / sqft per annum</span>
+                    <span className="font-bold">
+                      <CurrencyPrice aedAmount={property.serviceChargeAedPerSqft} isSqft /> per annum
+                    </span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-[#0E0E0E]/20">
                     <span className="text-[#59554F]">STATUTORY DLD TRANSFER:</span>
@@ -222,7 +225,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                   <div className="flex justify-between py-2">
                     <span className="text-[#59554F]">ESTIMATED ANNUAL OUTGOINGS:</span>
                     <span className="font-bold text-[#8C6A2F]">
-                      AED {new Intl.NumberFormat('en-AE').format(property.sqft * property.serviceChargeAedPerSqft)} / Year
+                      <CurrencyPrice aedAmount={property.sqft * property.serviceChargeAedPerSqft} /> / Year
                     </span>
                   </div>
                 </div>
@@ -318,7 +321,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                   </div>
                   <div className="pt-2 border-t border-[#0E0E0E]/20 font-mono text-xs flex justify-between items-baseline">
                     <span className="font-black text-[#0E0E0E]">
-                      AED {new Intl.NumberFormat('en-AE').format(sim.priceAed)}
+                      <CurrencyPrice aedAmount={sim.priceAed} />
                     </span>
                     <span className="text-[10px] text-[#8C6A2F] font-bold">{sim.status}</span>
                   </div>

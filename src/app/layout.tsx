@@ -5,7 +5,6 @@ import { brandConfig } from "@/config/brand";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import SmoothScroll from "@/components/SmoothScroll";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
-import MobileConciergeBar from "@/components/MobileConciergeBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -137,7 +136,6 @@ export default function RootLayout({
           <SmoothScroll />
           {children}
           <CookieConsentBanner />
-          <MobileConciergeBar />
         </CurrencyProvider>
       </body>
     </html>

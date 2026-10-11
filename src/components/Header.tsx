@@ -163,116 +163,91 @@ export default function Header() {
             </span>
           </button>
         </div>
+
+        {/* Clean, intuitive Mobile Drawer attached directly below the header */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-[#FFFFFF] border-t-2 border-[#0E0E0E] h-[calc(100dvh-100%)] overflow-y-auto px-6 py-6 flex flex-col justify-between shadow-2xl">
+            {/* Main Navigation Links */}
+            <nav className="flex flex-col divide-y divide-[#0E0E0E]/10 border-b border-[#0E0E0E]/10">
+              <Link
+                href="/properties"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-4 text-base font-bold text-[#0E0E0E] hover:text-[#8C6A2F] flex items-center justify-between transition-colors"
+              >
+                <span>Properties</span>
+                <span className="font-mono text-xs text-[#59554F]">12 Available</span>
+              </Link>
+
+              <Link
+                href="/communities"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-4 text-base font-bold text-[#0E0E0E] hover:text-[#8C6A2F] flex items-center justify-between transition-colors"
+              >
+                <span>Districts & Enclaves</span>
+                <span className="font-mono text-xs text-[#59554F]">8 Areas</span>
+              </Link>
+
+              <Link
+                href="/off-plan"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-4 text-base font-bold text-[#0E0E0E] hover:text-[#8C6A2F] flex items-center justify-between transition-colors"
+              >
+                <span>Off-Plan Radar</span>
+                <span className="font-mono text-xs text-[#8C6A2F] font-bold">Verified</span>
+              </Link>
+
+              <Link
+                href="/#calculator"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-4 text-base font-bold text-[#0E0E0E] hover:text-[#8C6A2F] flex items-center justify-between transition-colors"
+              >
+                <span>Mortgage & DLD Calculator</span>
+              </Link>
+
+              <Link
+                href="/about"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-4 text-base font-bold text-[#0E0E0E] hover:text-[#8C6A2F] flex items-center justify-between transition-colors"
+              >
+                <span>Private Office (About)</span>
+              </Link>
+
+              <Link
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-4 text-base font-bold text-[#0E0E0E] hover:text-[#8C6A2F] flex items-center justify-between transition-colors"
+              >
+                <span>Direct Contact</span>
+              </Link>
+            </nav>
+
+            {/* Quick Contact CTAs */}
+            <div className="pt-6 flex flex-col gap-2.5 font-mono text-xs">
+              <a
+                href={buildWhatsAppLink(whatsappMessage)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3.5 bg-[#8C6A2F] text-[#FFFFFF] text-center uppercase tracking-wider font-bold flex items-center justify-center gap-2"
+              >
+                <WhatsAppIcon className="w-4 h-4" />
+                <span>WhatsApp {brandConfig.broker.firstName}</span>
+              </a>
+
+              <a
+                href={`tel:${brandConfig.contact.phoneRaw}`}
+                className="w-full py-3 border border-[#0E0E0E] bg-[#FFFFFF] text-[#0E0E0E] text-center uppercase tracking-wider font-bold flex items-center justify-center gap-2"
+              >
+                <PhoneIcon className="w-3.5 h-3.5" />
+                <span>Call {brandConfig.contact.phoneDisplay}</span>
+              </a>
+
+              <div className="pt-2 text-center text-[10px] text-[#59554F]">
+                {brandConfig.broker.license.orn} · DIFC, Dubai
+              </div>
+            </div>
+          </div>
+        )}
       </header>
-
-      {/* Clean, intuitive Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#FFFFFF] flex flex-col pt-20 px-6 pb-6 lg:hidden overflow-y-auto">
-          {/* Main Navigation Links */}
-          <nav className="flex flex-col divide-y divide-[#0E0E0E]/10 border-b border-[#0E0E0E]/10">
-            <Link
-              href="/properties"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-3.5 text-base font-bold text-[#0E0E0E] hover:text-[#8C6A2F] flex items-center justify-between transition-colors"
-            >
-              <span>Properties</span>
-              <span className="font-mono text-[11px] text-[#59554F]">12 Available</span>
-            </Link>
-
-            <Link
-              href="/communities"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-3.5 text-base font-bold text-[#0E0E0E] hover:text-[#8C6A2F] flex items-center justify-between transition-colors"
-            >
-              <span>Districts & Enclaves</span>
-              <span className="font-mono text-[11px] text-[#59554F]">8 Areas</span>
-            </Link>
-
-            <Link
-              href="/off-plan"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-3.5 text-base font-bold text-[#0E0E0E] hover:text-[#8C6A2F] flex items-center justify-between transition-colors"
-            >
-              <span>Off-Plan Radar</span>
-              <span className="font-mono text-[11px] text-[#8C6A2F] font-bold">Verified</span>
-            </Link>
-
-            <Link
-              href="/#calculator"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-3.5 text-base font-bold text-[#0E0E0E] hover:text-[#8C6A2F] flex items-center justify-between transition-colors"
-            >
-              <span>Mortgage & DLD Calculator</span>
-            </Link>
-
-            <Link
-              href="/about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-3.5 text-base font-bold text-[#0E0E0E] hover:text-[#8C6A2F] flex items-center justify-between transition-colors"
-            >
-              <span>Private Office (About)</span>
-            </Link>
-
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-3.5 text-base font-bold text-[#0E0E0E] hover:text-[#8C6A2F] flex items-center justify-between transition-colors"
-            >
-              <span>Direct Contact</span>
-            </Link>
-          </nav>
-
-          {/* Currency Switcher */}
-          <div className="py-4 border-b border-[#0E0E0E]/10 font-mono">
-            <div className="flex justify-between items-center text-[10px] text-[#59554F] uppercase tracking-wider mb-2">
-              <span>Display Currency</span>
-              {isLiveRates && <span className="text-[#8C6A2F] font-bold">● Live API</span>}
-            </div>
-            <div className="grid grid-cols-4 border border-[#0E0E0E] bg-[#F4F1EA] divide-x divide-[#0E0E0E] text-center">
-              {(['AED', 'USD', 'EUR', 'GBP'] as const).map((c) => (
-                <button
-                  key={c}
-                  type="button"
-                  onClick={() => setCurrency(c)}
-                  className={`py-2 text-xs font-mono font-bold transition-colors ${
-                    currency === c
-                      ? "bg-[#0E0E0E] text-[#FFFFFF]"
-                      : "text-[#0E0E0E] hover:bg-[#E8E3D8]"
-                  }`}
-                  aria-label={`Switch mobile currency to ${c}`}
-                >
-                  {c}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick Contact CTAs */}
-          <div className="mt-auto pt-6 flex flex-col gap-2.5 font-mono text-xs">
-            <a
-              href={buildWhatsAppLink(whatsappMessage)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3 bg-[#8C6A2F] text-[#FFFFFF] text-center uppercase tracking-wider font-bold flex items-center justify-center gap-2"
-            >
-              <WhatsAppIcon className="w-4 h-4" />
-              <span>WhatsApp {brandConfig.broker.firstName}</span>
-            </a>
-
-            <a
-              href={`tel:${brandConfig.contact.phoneRaw}`}
-              className="w-full py-2.5 border border-[#0E0E0E] bg-[#FFFFFF] text-[#0E0E0E] text-center uppercase tracking-wider font-bold flex items-center justify-center gap-2"
-            >
-              <PhoneIcon className="w-3.5 h-3.5" />
-              <span>Call {brandConfig.contact.phoneDisplay}</span>
-            </a>
-
-            <div className="pt-2 text-center text-[10px] text-[#59554F]">
-              {brandConfig.broker.license.orn} · DIFC, Dubai
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }

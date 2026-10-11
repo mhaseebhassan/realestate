@@ -8,6 +8,16 @@ import { WhatsAppIcon, PhoneIcon, ArrowUpRightIcon } from "@/components/Icons";
 
 export default function PropertyStickyBar({ property }: { property: Property }) {
   const { formatPrice } = useCurrency();
+  const [visible, setVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.scrollY > 400);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const whatsappMessage = `Hi ${brandConfig.broker.firstName},
 
@@ -19,8 +29,10 @@ I am inquiring regarding the private viewing of:
 
 Please share the physical inspection schedule and owner documentation status.`;
 
+  if (!visible) return null;
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#FFFFFF] border-t-2 border-[#0E0E0E] py-3 px-4 md:px-8 shadow-none">
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#FFFFFF] border-t-2 border-[#0E0E0E] py-3 px-4 md:px-8 shadow-none transition-transform duration-200">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         {/* Left Property Summary */}
         <div className="hidden sm:flex items-center gap-6">

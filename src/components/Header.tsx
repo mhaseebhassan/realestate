@@ -45,9 +45,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 w-full transition-colors duration-200 ${
-          scrolled ? "bg-[#F4F1EA]/95 backdrop-blur-none border-b border-[#0E0E0E]" : "bg-[#F4F1EA] border-b border-[#0E0E0E]"
-        }`}
+        className="sticky top-0 z-50 w-full bg-[#F4F1EA] border-b border-[#0E0E0E]"
       >
         {/* Top utility strip */}
         <div className="w-full border-b border-[#0E0E0E]/20 px-3 md:px-8 py-1 flex items-center justify-between text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#59554F]">

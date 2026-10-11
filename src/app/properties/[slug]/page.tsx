@@ -107,7 +107,7 @@ export default async function PropertyDetailPage({ params }: Props) {
         </div>
 
         {/* Title & Valuation Masthead */}
-        <div className="bg-[#E8E3D8] border-b-2 border-[#0E0E0E] px-4 md:px-8 py-8 md:py-12">
+        <div className="bg-[#E8E3D8] border-b-2 border-[#0E0E0E] px-4 md:px-8 py-5 md:py-8">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
               <div className="flex items-center gap-3 font-mono text-xs uppercase mb-2">
@@ -118,24 +118,35 @@ export default async function PropertyDetailPage({ params }: Props) {
                 <span>·</span>
                 <span className="text-[#59554F]">DEVELOPER: {property.developer}</span>
               </div>
-              <h1 className="font-sans font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-[#0E0E0E] tracking-tight leading-[1.05] break-words">
+              <h1 className="font-sans font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#0E0E0E] tracking-tight leading-tight break-words">
                 {property.title}
               </h1>
-              <p className="font-sans text-sm md:text-base text-[#59554F] mt-3 max-w-2xl font-medium">
+              <p className="font-sans text-xs md:text-sm text-[#59554F] mt-2 max-w-2xl font-medium">
                 {property.headline}
               </p>
+
+              {/* Core Specs Bar right in the masthead */}
+              <div className="flex flex-wrap items-center gap-3 mt-4 pt-3 border-t border-[#0E0E0E]/15 font-mono text-xs text-[#0E0E0E]">
+                <span className="font-bold">{property.bedrooms} BEDS</span>
+                <span className="text-[#59554F]">·</span>
+                <span className="font-bold">{property.bathrooms} BATHS</span>
+                <span className="text-[#59554F]">·</span>
+                <span className="font-bold">{new Intl.NumberFormat("en-US").format(property.sqft)} SQFT</span>
+                <span className="text-[#59554F]">·</span>
+                <span className="font-bold text-[#8C6A2F] uppercase">{property.type}</span>
+              </div>
             </div>
 
-            <div className="p-6 bg-[#FFFFFF] border-2 border-[#0E0E0E] shrink-0 font-mono">
+            <div className="p-4 sm:p-5 bg-[#FFFFFF] border-2 border-[#0E0E0E] shrink-0 font-mono">
               <span className="text-[10px] uppercase text-[#59554F] block">
                 OFFICIAL ASKING PRICE
               </span>
-              <div className="font-black text-2xl md:text-4xl text-[#0E0E0E] my-1">
+              <div className="font-black text-2xl md:text-3xl text-[#0E0E0E] my-1">
                 <CurrencyPrice aedAmount={property.priceAed} showOriginalAed />
               </div>
               <div className="flex justify-between items-center text-xs text-[#59554F] pt-2 border-t border-[#0E0E0E]/20 gap-4">
                 <CurrencyPrice aedAmount={property.pricePerSqft} isSqft />
-                <span className="text-[#8C6A2F] font-bold">{property.status}</span>
+                <span className="text-[#8C6A2F] font-bold uppercase">{property.status}</span>
               </div>
             </div>
           </div>
